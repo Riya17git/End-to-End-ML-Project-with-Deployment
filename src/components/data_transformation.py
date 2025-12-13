@@ -85,10 +85,25 @@ class DataTransformation:
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
+            # Handle any potential NaN values in target column and convert to float
+            target_feature_train_arr = target_feature_train_df.values.astype(np.float64)
+            target_feature_test_arr = target_feature_test_df.values.astype(np.float64)
+            
+            # Check for and handle NaN values in target
+            if np.isnan(target_feature_train_arr).any():
+                logging.warning("NaN values found in training target. Filling with median.")
+                median_value = np.nanmedian(target_feature_train_arr)
+                target_feature_train_arr = np.nan_to_num(target_feature_train_arr, nan=median_value)
+            
+            if np.isnan(target_feature_test_arr).any():
+                logging.warning("NaN values found in test target. Filling with median.")
+                median_value = np.nanmedian(target_feature_test_arr)
+                target_feature_test_arr = np.nan_to_num(target_feature_test_arr, nan=median_value)
+
             train_arr = np.c_[
-                input_feature_train_arr, np.array(target_feature_train_df)
+                input_feature_train_arr, target_feature_train_arr
             ]
-            test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
+            test_arr = np.c_[input_feature_test_arr, target_feature_test_arr]
 
             logging.info(f"Saved preprocessing object.")
 
