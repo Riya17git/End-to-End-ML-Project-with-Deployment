@@ -27,7 +27,7 @@ Deployment: Microsoft Azure App Services
 Version Control: Git & GitHub
 
 # 📂 Project Structure
-
+```
 ├── artifacts/
 │   ├── model.pkl
 │   ├── preprocessor.pkl
@@ -44,6 +44,7 @@ Version Control: Git & GitHub
 ├── requirements.txt
 ├── setup.py
 └── README.md
+```
 
 # Azure Deployment Link
 
