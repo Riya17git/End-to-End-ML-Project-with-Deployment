@@ -48,7 +48,7 @@ Version Control: Git & GitHub
 
 # Azure Deployment Link
 
-🔗 [Live Demo](https://gempriceprediction-ekd7dggvbmhtdqcx.canadacentral-01.azurewebsites.net/predictdata)
+🔗 (https://gempriceprediction-ekd7dggvbmhtdqcx.canadacentral-01.azurewebsites.net/predictdata)
 
 # Approach of the Project 
 
